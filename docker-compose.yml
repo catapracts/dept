@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - SQLALCHEMY_DATABASE_URL=mysql+mysqlconnector://<root>:<1234>@<localhost>/<test1>
+
+  frontend:
+    build:
+      context: ./frontend   # React 애플리케이션 폴더 경로
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"          # React 개발 서버 포트
+
+# Optional: Add volumes, networks, etc. as needed
