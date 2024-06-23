@@ -25,6 +25,6 @@ jobs:
         env:
           IMAGE_TAG: dept/docker_test  # Docker Hub 레포지토리/이미지 이름 설정
         run: |
-          docker-compose -f .github/workflows/docker-compose.yml build
+          docker-compose -f docker-compose.yml build
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-          docker-compose -f .github/workflows/docker-compose.yml push
+          docker-compose -f docker-compose.yml push
