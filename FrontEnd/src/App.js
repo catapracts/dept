@@ -10,10 +10,11 @@ function App() {
     };
 
     const handleAdd = async () => {
-        const response = await fetch('/add', { // 프록시 경로 사용
+        const response = await fetch('/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Origin': 'http://localhost:3000'  // 프론트엔드의 주소로 설정
             },
             body: JSON.stringify({ value: inputValue }),
         });
@@ -24,7 +25,11 @@ function App() {
     };
     
     const fetchLatestValue = async () => {
-        const response = await fetch('/get'); // 프록시 경로 사용
+        const response = await fetch('/get', {
+            headers: {
+                'Origin': 'http://localhost:3000'  // 프론트엔드의 주소로 설정
+            }
+        });
         if (response.ok) {
             const data = await response.json();
             setStoredValue(data.value);
