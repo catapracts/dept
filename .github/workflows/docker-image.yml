@@ -24,8 +24,9 @@ jobs:
 
       - name: Build and push Docker image
         env:
-          IMAGE_TAG: docker_test:latest  # 이미지 태그 설정
+          IMAGE_TAG: catapracts/docker_test  # 이미지 태그 설정
         run: |
           docker-compose build
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
           docker-compose push
+            - name: Build and push Docker image
