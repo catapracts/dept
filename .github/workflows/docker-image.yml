@@ -28,5 +28,5 @@ jobs:
         env:
           IMAGE_TAG: dept/docker_test  # Docker Hub 레포지토리/이미지 이름 설정
         run: |
-          docker-compose -f path/to/your/docker-compose.yml build
-          docker-compose -f path/to/your/docker-compose.yml push
+          docker-compose -f docker-compose.yml build
+          docker-compose -f docker-compose.yml push
