@@ -10,7 +10,7 @@ function App() {
     };
 
     const handleAdd = async () => {
-        const response = await fetch('http://localhost:8000/add', {
+        const response = await fetch('/add', { // 프록시 경로 사용
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -22,9 +22,9 @@ function App() {
             fetchLatestValue();
         }
     };
-
+    
     const fetchLatestValue = async () => {
-        const response = await fetch('http://localhost:8000/get');
+        const response = await fetch('/get'); // 프록시 경로 사용
         if (response.ok) {
             const data = await response.json();
             setStoredValue(data.value);
