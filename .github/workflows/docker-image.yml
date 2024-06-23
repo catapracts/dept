@@ -7,9 +7,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build_and_push_image:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     
     env:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
@@ -24,9 +23,8 @@ jobs:
 
       - name: Build and push Docker image
         env:
-          IMAGE_TAG: catapracts/docker_test  # 이미지 태그 설정
+          IMAGE_TAG: dept/docker_test  # Docker Hub 레포지토리/이미지 이름 설정
         run: |
-          docker-compose build
+          docker-compose -f ./github/workflows/docker-compose.yml build
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-          docker-compose push
-            - name: Build and push Docker image
+          docker-compose -f ./github/workflows/docker-compose.yml push
